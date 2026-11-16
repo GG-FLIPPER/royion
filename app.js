@@ -1,4 +1,4 @@
-// Royion Friend Edition — based on the Shrimpion daily trivia dive.
+// Royion Friend Edition — based on the original daily trivia dive.
 (function () {
   'use strict';
 
@@ -9,7 +9,7 @@
     schooler: { id: 'schooler', name: 'Schooler', score: 30, meters: 300, emoji: '🐟', color: 'var(--tier-schooler)', blurb: 'Solid — swims with the school.' },
     rare: { id: 'rare', name: 'Rare', score: 60, meters: 600, emoji: '🦑', color: 'var(--tier-rare)', blurb: 'Genuinely uncommon. Nice pull.' },
     deepcut: { id: 'deepcut', name: 'Deep Cut', score: 85, meters: 850, emoji: '🏮', color: 'var(--tier-deepcut)', blurb: 'True obscurity. Few go this deep.' },
-    shrimpion: { id: 'shrimpion', name: 'One in a Shrimpion', score: 100, meters: 1000, emoji: '🌟', color: 'var(--tier-krillion)', blurb: 'The designated gem. Trench floor.' }
+    shrimpion: { id: 'shrimpion', name: 'One in a Royion', score: 100, meters: 1000, emoji: '🌟', color: 'var(--tier-krillion)', blurb: 'The designated gem. Trench floor.' }
   };
 
   const TIER_IDS = ['plankton', 'tooclever', 'schooler', 'rare', 'deepcut', 'shrimpion'];
@@ -29,7 +29,7 @@
     { min: 151, tier: 'schooler', range: '151–250', verdict: 'Schooler. Swimming with the school.' },
     { min: 251, tier: 'rare', range: '251–350', verdict: 'Rare. Below the thermocline. Nice.' },
     { min: 351, tier: 'deepcut', range: '351–449', verdict: 'Deep cut. Seriously deep dive.' },
-    { min: 450, tier: 'shrimpion', range: '450+', verdict: 'One in a shrimpion. Trench dweller. Absurd.' }
+    { min: 450, tier: 'shrimpion', range: '450+', verdict: 'One in a Royion. Trench dweller. Absurd.' }
   ];
 
   const AMBIENT_OCEAN = [
@@ -121,7 +121,7 @@
     { id: 'schooler', name: 'Finn Schooler', alt: 'schooler fish buddy', color: '#4de3ff', blub: 'glub!', poke: 'dart', pokeMs: 900, unlockStreak: 5, desc: 'Solid swimmer with the crowd.' },
     { id: 'rare', name: 'Inky Squid', alt: 'rare squid buddy', color: '#ff5252', blub: 'blorp!', poke: 'jet', pokeMs: 1050, unlockStreak: 14, desc: 'Uncommon sightings below the light.' },
     { id: 'deepcut', name: 'Deep Cut Angler', alt: 'deep cut angler buddy', color: '#9d7bff', blub: 'chomp!', poke: 'chomp', pokeMs: 950, unlockStreak: 30, desc: 'True abyss navigator.' },
-    { id: 'golden', name: 'Empress Shrimpion', alt: 'crowned golden shrimpion buddy', color: '#ffd166', blub: 'mwahaha!', poke: 'roll', pokeMs: 950, unlockStreak: 45, desc: 'Master of the 7,000m trench.' }
+    { id: 'golden', name: 'Empress Royion', alt: 'crowned golden Royion buddy', color: '#ffd166', blub: 'mwahaha!', poke: 'roll', pokeMs: 950, unlockStreak: 45, desc: 'Master of the 7,000m trench.' }
   ];
 
   const REACTION_ASSETS = {
@@ -130,7 +130,7 @@
     schooler: ['assets/reactions/IMG_20261116_081749_897.png', 'Schooler reaction'],
     rare: ['assets/reactions/IMG_20261116_081721_144.png', 'Rare reaction'],
     deepcut: ['assets/reactions/IMG_20261116_081711_731.png', 'Deep Cut reaction'],
-    shrimpion: ['assets/reactions/IMG_20261116_081738_328.png', 'One in a Shrimpion reaction'],
+    shrimpion: ['assets/reactions/IMG_20261116_081738_328.png', 'One in a Royion reaction'],
     miss: ['assets/reactions/IMG_20261116_081714_302.png', 'Miss or timeout reaction']
   };
 
@@ -162,7 +162,7 @@
   function getBuddySvg(buddyId, isGold = false, isCinema = false, isTrek = false) {
     if (!isCinema && !isTrek && (buddyId === 'shrimp' || buddyId === 'golden')) {
       const mascotAsset = isGold || buddyId === 'golden'
-        ? ['assets/reactions/IMG_20261116_081738_328.png', 'One in a Shrimpion friend mascot']
+        ? ['assets/reactions/IMG_20261116_081738_328.png', 'One in a Royion friend mascot']
         : ['assets/reactions/IMG_20261116_081749_897.png', 'Schooler friend mascot'];
       return `<img class="royion-mascot-photo" src="${mascotAsset[0]}" alt="${mascotAsset[1]}" draggable="false">`;
     }
@@ -268,7 +268,7 @@
     }
 
     if (isGold || buddyId === 'golden') {
-      // Crowned Empress Shrimpion
+      // Crowned Empress Royion
       return `<svg viewBox="0 0 32 32" shape-rendering="crispEdges">
         <!-- Royal Crown -->
         <rect x="19" y="3" width="1" height="2" fill="#ffeaa7"/>
@@ -17655,7 +17655,7 @@
     const surfaceEl = rootEl.querySelector('.ds-surface');
     const titleEl = rootEl.querySelector('.ds-title');
 
-    function renderTitle(text = 'SHRIMPION') {
+    function renderTitle(text = 'ROYION') {
       titleEl.innerHTML = '';
       text.split('').forEach((char, i) => {
         const span = document.createElement('span');
@@ -17664,7 +17664,7 @@
         titleEl.appendChild(span);
       });
     }
-    renderTitle('SHRIMPION');
+    renderTitle('ROYION');
     surfaceEl.style.top = '-336px';
 
     for (let i = 0; i < 7; i++) {
@@ -18399,7 +18399,7 @@
         ctx.moveTo(shipX + 22, shipY - 12);
         ctx.lineTo(w / 2, h);
         ctx.stroke();
-        drawPixelText(ctx, 'R/V SHRIMPION', shipX + 16, shipY + 16, 1, '#ffffff');
+        drawPixelText(ctx, 'R/V ROYION', shipX + 16, shipY + 16, 1, '#ffffff');
       }
 
       // 2. 200m: Scuba Diver & Shark Cage
@@ -19024,7 +19024,7 @@
           const sx = bTile * streetLoop - streetScroll;
           if (sx + streetLoop < -200 || sx > width + 200) continue;
 
-          // Building 0: SHRIMPION / KRILLION STUDIO ENTRANCE GATE ARCH at 0ft
+          // Building 0: ROYION / KRILLION STUDIO ENTRANCE GATE ARCH at 0ft
           const gateX = sx;
           if (gateX > -180 && gateX < width + 180) {
             seaCtx.fillStyle = '#f5eedb';
@@ -19035,7 +19035,7 @@
             seaCtx.fillRect(gateX + 67, sidewalkY - 94, 24, 6);
             seaCtx.fillStyle = '#ffd166';
             seaCtx.fillRect(gateX - 52, sidewalkY - 82, 122, 4);
-            drawPixelText(seaCtx, 'SHRIMPION STUDIOS', gateX - 60, sidewalkY - 104, 1, '#ffd166', '#000000');
+            drawPixelText(seaCtx, 'ROYION STUDIOS', gateX - 60, sidewalkY - 104, 1, '#ffd166', '#000000');
             seaCtx.fillStyle = '#e53935';
             seaCtx.fillRect(gateX - 48, sidewalkY - 4, 114, 4);
             seaCtx.fillStyle = '#ffd166';
@@ -20298,7 +20298,7 @@
       const scoreColor = isTrek ? '#52b788' : 'var(--color-lumen-cyan)';
       const doneHeading = this.mode === 'endless'
         ? 'UNLIMITED DIVE'
-        : (isTrek ? 'EXPEDITION COMPLETE' : (this.packName ? this.packName.toUpperCase() : 'SHRIMPION'));
+        : (isTrek ? 'EXPEDITION COMPLETE' : (this.packName ? this.packName.toUpperCase() : 'ROYION'));
       const subHeading = this.mode === 'endless'
         ? `${this.roundResults.length} PROMPTS COMPLETED`
         : (isTrek ? '7 EXPEDITION LEGS CONQUERED' : `DIVE #${this.currentDiveNumber || this.getDiveNumber()} COMPLETE`);
@@ -21110,7 +21110,7 @@
           }
           case 'share-result': {
             const unit = this.descentTheme === 'cinema' ? 'ft' : 'm';
-            const text = `SHRIMPION #${this.currentDiveNumber || this.getDiveNumber()} 🦐\nScore: ${this.score}/700 (-${(this.score * 10).toLocaleString()}${unit})\n${this.roundResults.map((r) => r.tier ? TIERS[r.tier]?.emoji || '🫧' : '⬛').join('')}\nhttps://shrimpion.io`;
+            const text = `ROYION #${this.currentDiveNumber || this.getDiveNumber()} 🦐\nScore: ${this.score}/700 (-${(this.score * 10).toLocaleString()}${unit})\n${this.roundResults.map((r) => r.tier ? TIERS[r.tier]?.emoji || '🫧' : '⬛').join('')}\nhttps://gg-flipper.github.io/royion/`;
             if (navigator.clipboard) {
               navigator.clipboard.writeText(text).then(() => this.showToast('COPIED TO CLIPBOARD!'));
             } else {

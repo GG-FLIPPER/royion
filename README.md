@@ -1,6 +1,6 @@
 # Royion Friend Edition
 
-Royion is the friend-specific edition of the daily trivia dive, copied from the current [Shrimpion](https://github.com/GG-FLIPPER/shrimpion) base. The game loop, prompt data, scoring, themed packs, offline storage, and responsive interface remain functional with a hardcoded friend reaction set.
+Royion is the friend-specific edition of the daily trivia dive, based on the original trivia base. The game loop, prompt data, scoring, themed packs, offline storage, and responsive interface remain functional with a hardcoded friend reaction set.
 
 The friend photos are bundled locally in `assets/reactions/`. There is no public asset-upload or customization surface, so this special edition cannot be changed through the UI.
 
@@ -13,7 +13,7 @@ The friend photos are bundled locally in `assets/reactions/`. There is no public
 | `IMG_20261116_081749_897.png` | Schooler | +30 |
 | `IMG_20261116_081721_144.png` | Rare | +60 |
 | `IMG_20261116_081711_731.png` | Deep Cut | +85 |
-| `IMG_20261116_081738_328.png` | One in a Shrimpion | +100 |
+| `IMG_20261116_081738_328.png` | One in a Royion | +100 |
 | `IMG_20261116_081714_302.png` | Miss/timeout | 0 |
 
 ## Run locally
