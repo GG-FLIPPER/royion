@@ -176,6 +176,9 @@ button:disabled {
   user-select: none;
   -webkit-user-select: none;
 }
+.ds-root[data-phase="done"] #descent-container {
+  visibility: hidden;
+}
 
 #descent-container {
   position: absolute;

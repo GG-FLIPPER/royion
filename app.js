@@ -19647,6 +19647,14 @@
         updateHud();
       },
 
+      clearResultDecorations() {
+        worldEl.querySelectorAll('.ds-tierline, .ds-landed, .ds-card, .ds-chip').forEach((el) => el.remove());
+        tierLineEls = [];
+        activeCardEl = null;
+        mascotPerchedIcon = null;
+        mascotEl.classList.remove('perched', 'gold');
+      },
+
       intro() {
         worldEl.querySelectorAll('.ds-landed, .ds-card, .ds-tierline, .ds-chip').forEach((el) => el.remove());
         tierLineEls = [];
@@ -20762,6 +20770,7 @@
       }
       saveStore();
 
+      this.descent.clearResultDecorations();
       this.setPhase('done');
     }
 
