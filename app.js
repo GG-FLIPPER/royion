@@ -124,10 +124,21 @@
     { id: 'golden', name: 'Empress Shrimpion', alt: 'crowned golden shrimpion buddy', color: '#ffd166', blub: 'mwahaha!', poke: 'roll', pokeMs: 950, unlockStreak: 45, desc: 'Master of the 7,000m trench.' }
   ];
 
-  // --- Hardcoded placeholder sprites ---
-  // Friend-specific photos/reactions can replace these generators and BUDDIES
-  // entries when the real assets are supplied. There is intentionally no
-  // public asset-upload or customization surface in this edition.
+  const REACTION_ASSETS = {
+    tooclever: ['assets/reactions/IMG_20261116_081759_671.png', 'Too Clever reaction'],
+    plankton: ['assets/reactions/IMG_20261116_081756_008.png', 'Plankton reaction'],
+    schooler: ['assets/reactions/IMG_20261116_081749_897.png', 'Schooler reaction'],
+    rare: ['assets/reactions/IMG_20261116_081721_144.png', 'Rare reaction'],
+    deepcut: ['assets/reactions/IMG_20261116_081711_731.png', 'Deep Cut reaction'],
+    shrimpion: ['assets/reactions/IMG_20261116_081738_328.png', 'One in a Shrimpion reaction'],
+    miss: ['assets/reactions/IMG_20261116_081714_302.png', 'Miss or timeout reaction']
+  };
+
+  function getReactionVisual(tierId) {
+    const asset = REACTION_ASSETS[tierId] || REACTION_ASSETS.miss;
+    return `<img class="royion-reaction" src="${asset[0]}" alt="${asset[1]}" draggable="false">`;
+  }
+
   function getTierSvg(tierId) {
     switch (tierId) {
       case 'plankton':
@@ -19740,7 +19751,7 @@
           line.style.setProperty('--tc', `var(--tier-${tid})`);
           line.innerHTML = `
             <div class="tag"${!isCinema && idx % 2 ? ' style="right: auto; left: 0;"' : ''}><!-- ocean: alternate tags left/right so close tiers never stack -->
-              <span class="tier-mini-icon">${getTierSvg(tid)}</span>
+              <span class="tier-mini-icon">${getReactionVisual(tid)}</span>
               ${tierInfo.name.toUpperCase()} · ${tierInfo.score}
             </div>
           `;
@@ -19759,6 +19770,22 @@
           audio.event('miss');
           triggerColorFlash('rgba(61, 79, 110, 0.5)', 1, 200);
           playMascotAnim('sad', 2600);
+          const missBanner = document.createElement('div');
+          missBanner.className = 'ds-landed miss';
+          if (isH) {
+            missBanner.style.left = `${2 * startDepth}px`;
+          } else {
+            missBanner.style.top = `${2 * startDepth}px`;
+          }
+          missBanner.style.setProperty('--tc', 'var(--tier-miss)');
+          missBanner.innerHTML = `
+            <div class="landed-icon">${getReactionVisual('miss')}</div>
+            <div class="tname">MISS</div>
+            <div class="tans">NO ANSWER</div>
+            <div class="tpts"><b>0 PTS</b> · timeout</div>
+            <div class="tsub">${outcome.sub}</div>
+          `;
+          worldEl.appendChild(missBanner);
           setTimeout(() => {
             currentMeters = startDepth;
             roundsDone += 1;
@@ -19881,7 +19908,7 @@
           const verb = isCinema ? 'cruise' : (isTrek ? 'trek' : 'sink');
           const prefix = isTrek ? '+' : '';
           banner.innerHTML = `
-            <div class="landed-icon">${getTierSvg(outcome.tier)}</div>
+            <div class="landed-icon">${getReactionVisual(outcome.tier)}</div>
             <div class="tname">${TIERS[outcome.tier].name.toUpperCase()}</div>
             <div class="tans">“${outcome.answerText}”</div>
             <div class="tpts"><b>+${outcome.points} PTS</b> · ${verb} ${prefix}${(10 * outcome.points).toLocaleString()}${unit}</div>
@@ -20309,7 +20336,7 @@
                       <div class="divelog-col">
                         <div class="divelog-line" style="height: ${pct}%; background: ${tier.color};"></div>
                         <div class="divelog-node" style="top: ${pct}%; color: ${tier.color};">
-                          ${r.tier ? getTierSvg(r.tier) : '<svg viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="3" width="10" height="10"/></svg>'}
+                          ${r.tier ? getReactionVisual(r.tier) : getReactionVisual('miss')}
                         </div>
                       </div>
                     `;

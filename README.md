@@ -1,8 +1,20 @@
 # Royion Friend Edition
 
-Royion is the friend-specific edition of the daily trivia dive, copied from the current [Shrimpion](https://github.com/GG-FLIPPER/shrimpion) base. The game loop, prompt data, scoring, themed packs, offline storage, and responsive interface remain functional while the friend-specific asset layer is prepared for later replacement.
+Royion is the friend-specific edition of the daily trivia dive, copied from the current [Shrimpion](https://github.com/GG-FLIPPER/shrimpion) base. The game loop, prompt data, scoring, themed packs, offline storage, and responsive interface remain functional with a hardcoded friend reaction set.
 
-The current copy intentionally keeps the base shrimp sprites and reactions as placeholders. No friend photos or reaction artwork are fabricated here. When those assets are available, replace the hardcoded buddy/sprite definitions in `app.js`; this edition has no public asset-upload or customization controls.
+The friend photos are bundled locally in `assets/reactions/`. There is no public asset-upload or customization surface, so this special edition cannot be changed through the UI.
+
+## Reaction mapping
+
+| Supplied photo | Reaction | Score |
+| --- | --- | ---: |
+| `IMG_20261116_081759_671.png` | Too Clever | +15 |
+| `IMG_20261116_081756_008.png` | Plankton | +10 |
+| `IMG_20261116_081749_897.png` | Schooler | +30 |
+| `IMG_20261116_081721_144.png` | Rare | +60 |
+| `IMG_20261116_081711_731.png` | Deep Cut | +85 |
+| `IMG_20261116_081738_328.png` | One in a Shrimpion | +100 |
+| `IMG_20261116_081714_302.png` | Miss/timeout | 0 |
 
 ## Run locally
 
@@ -36,6 +48,14 @@ styles.css   Pixel-inspired responsive visual system
 
 Royion does not require an account or backend. Local progress is stored with `localStorage` in the browser. If Live Archive Search is enabled, the current prompt and submitted answer may be sent to the public Wikipedia/Wikidata APIs to check niche entries. Turning the setting off keeps play local.
 
-## Asset status
+## Build and install
 
-Friend-specific photos, reactions, and final branding artwork remain outstanding inputs. Until supplied, the copied Shrimpion assets are deliberately retained so the project remains runnable and testable.
+There is no compile step and no package dependency. To install locally, clone the repository and serve the project directory with any static HTTP server:
+
+```sh
+git clone https://github.com/GG-FLIPPER/royion.git
+cd royion
+python3 -m http.server 4173
+```
+
+Open <http://localhost:4173/> in a browser. The same static files can be deployed to GitHub Pages using the included `.github/workflows/pages.yml` workflow.
