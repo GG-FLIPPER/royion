@@ -1562,9 +1562,20 @@ button:disabled {
   transform: translate(-50%, -50%);
   width: 22px;
   height: 22px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.divelog-node .royion-reaction {
+  display: block;
+  width: 22px;
+  height: 22px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  user-select: none;
 }
 
 /* The Catch Expandable Round List */
