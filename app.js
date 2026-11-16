@@ -160,6 +160,12 @@
 
   // Smaller, High-Detail Pixel Mascot Shrimp
   function getBuddySvg(buddyId, isGold = false, isCinema = false, isTrek = false) {
+    if (!isCinema && !isTrek && (buddyId === 'shrimp' || buddyId === 'golden')) {
+      const mascotAsset = isGold || buddyId === 'golden'
+        ? ['assets/reactions/IMG_20261116_081738_328.png', 'One in a Shrimpion friend mascot']
+        : ['assets/reactions/IMG_20261116_081749_897.png', 'Schooler friend mascot'];
+      return `<img class="royion-mascot-photo" src="${mascotAsset[0]}" alt="${mascotAsset[1]}" draggable="false">`;
+    }
     if (isTrek && (buddyId === 'shrimp' || buddyId === 'golden')) {
       // Expedition Hiker Shrimp: backpack with sleeping roll, hiking boots, trekking pole & expedition beanie
       const main = isGold ? '#ffd166' : '#ff5d8f';
