@@ -1,10 +1,22 @@
 # Royion Friend Edition
 
-Royion is the friend-specific edition of the daily trivia dive, based on the original trivia base. The game loop, prompt data, scoring, themed packs, offline storage, and responsive interface remain functional with a hardcoded friend reaction set.
+Royion is a friend-specific edition of the daily trivia dive. It keeps the original game loop, daily and unlimited modes, themed packs, offline storage, and responsive interface, with seven hardcoded friend reactions and friend-photo mascots.
 
-The friend photos are bundled locally in `assets/reactions/`. There is no public asset-upload or customization surface, so this special edition cannot be changed through the UI.
+## What is inside
+
+- **Daily Dive** — seven prompts in a fresh daily challenge.
+- **Unlimited Ocean** — keep diving with an endless stream of prompts.
+- **Themed Packs** — explore alternate prompt sets and visual worlds.
+- **Shrimp Relay** — pass the keyboard around for same-device party play.
+- **Answer tiers** — score from Plankton to **One in a Royion**.
+- **Field guide and archive** — browse discovered answers and dive history.
+- **Dive buddies** — unlock and equip illustrated or friend-photo companions.
+- **Offline-first storage** — scores, settings, and progress stay in your browser.
+- **Optional live lookup** — Wikipedia and Wikidata can help verify niche answers; disable it in Settings to keep play local.
 
 ## Reaction mapping
+
+The friend photos are bundled locally in `assets/reactions/`. There is no public asset-upload or customization surface.
 
 | Supplied photo | Reaction | Score |
 | --- | --- | ---: |
@@ -16,9 +28,17 @@ The friend photos are bundled locally in `assets/reactions/`. There is no public
 | `IMG_20261116_081738_328.png` | One in a Royion | +100 |
 | `IMG_20261116_081714_302.png` | Miss/timeout | 0 |
 
+## How to play
+
+1. Pick a mode from the menu.
+2. Read the prompt and type the answer that feels right.
+3. Submit before the timer expires.
+4. Watch the depth meter reveal how rare your answer was.
+5. Use the archive, wardrobe, and field guide to track your progress.
+
 ## Run locally
 
-Royion has no build step and no package dependencies.
+Royion has no build step or package dependencies.
 
 ```sh
 git clone https://github.com/GG-FLIPPER/royion.git
@@ -26,15 +46,7 @@ cd royion
 python3 -m http.server 4173
 ```
 
-Open <http://localhost:4173/> in a browser. A local server provides the most consistent browser behavior.
-
-## Included base functionality
-
-- Daily Dive, Unlimited Ocean, party relay, and themed prompt packs.
-- Tiered scoring and depth-meter feedback.
-- Offline-first progress, settings, archive, wardrobe, and field guide storage.
-- Optional Wikipedia/Wikidata lookup, disabled from Settings when desired.
-- GitHub Pages deployment through `.github/workflows/pages.yml`.
+Open <http://localhost:4173/> in a browser. The same static files are deployed to GitHub Pages by `.github/workflows/pages.yml`.
 
 ## Project layout
 
@@ -46,16 +58,8 @@ styles.css   Pixel-inspired responsive visual system
 
 ## Privacy
 
-Royion does not require an account or backend. Local progress is stored with `localStorage` in the browser. If Live Archive Search is enabled, the current prompt and submitted answer may be sent to the public Wikipedia/Wikidata APIs to check niche entries. Turning the setting off keeps play local.
+Royion does not require an account or backend. Local progress is stored with `localStorage` in your browser. If Live Archive Search is enabled, the current prompt and submitted answer may be sent to the public Wikipedia/Wikidata APIs to check niche entries. Turning the setting off keeps play local.
 
-## Build and install
+## Attribution
 
-There is no compile step and no package dependency. To install locally, clone the repository and serve the project directory with any static HTTP server:
-
-```sh
-git clone https://github.com/GG-FLIPPER/royion.git
-cd royion
-python3 -m http.server 4173
-```
-
-Open <http://localhost:4173/> in a browser. The same static files can be deployed to GitHub Pages using the included `.github/workflows/pages.yml` workflow.
+Royion is a friend-specific edition of an independent daily trivia dive. The friend reaction photos are edition-specific assets and are not configurable through the game.
